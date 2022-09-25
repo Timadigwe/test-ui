@@ -1,6 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, SafeAreaView, Image, ScrollView } from 'react-native';
 import { useFonts } from 'expo-font'
+import HomeHeader from './components/HomeHeader'
+import { NativeBaseProvider } from 'native-base';
+Z
 
 export default function App() {
   const [loaded] = useFonts({
@@ -9,17 +12,18 @@ export default function App() {
       PoppinsMedium: require("./assets/Poppins/Poppins-Medium.ttf"),
       PoppinsRegular: require("./assets/Poppins/Poppins-Regular.ttf"),
       PoppinsLight: require("./assets/Poppins/Poppins-Light.ttf"),
-      PoppinsExtraLight: require("./assets/Poppins/Poppins-ExtraLight.ttf")
+      PoppinsExtraLight: require("./assets/Poppins/Poppins-ExtraLight.ttf"),
+      Nonito: require("./assets/Nunito/static/Nunito-Regular.ttf")
   });
   if(!loaded) {
     return null;
   }
 
   return (
-    
+    <NativeBaseProvider>
       <SafeAreaView style={styles.container}>
         <StatusBar style="auto" backgroundColor="" />
-        <View style={{ backgroundColor: "#F9C70C", width: "100%", height: 200, flexDirection: 'row', justifyContent:"space-between", alignItems: 'center'}}>
+{/**         <View style={{ backgroundColor: "#F9C70C", width: "100%", height: 200, flexDirection: 'row', justifyContent:"space-between", alignItems: 'center'}}>
             <View style={{width: 40, height: 40, backgroundColor: "#FFFFFF", borderRadius: 20, paddingTop:12, marginLeft: 20, alignItems:"center"}}>
                <Image source={require("./assets/Shape.png")} style={{ marginTop: 3}}/>
                <Image source={require("./assets/Shape.png")} style={{ marginTop: 3}}/>
@@ -28,7 +32,8 @@ export default function App() {
             <View style={{ width: 40, height: 40, borderRadius: 20, backgroundColor:"#FFFFFF", alignItems: 'center' ,paddingTop: 12, marginRight: 20 }}>
                <Image  source={require("./assets/Notification.png")} resizeMode="contain" />
             </View>
-        </View>
+  </View> **/}
+          <HomeHeader />
         <View style={{ width: 328, height: 118, padding:10, backgroundColor: "#FFFFFF", top: 145,position: 'absolute', marginLeft: 16, borderRadius: 12, flexDirection: 'row', alignItem:'center'}}>
             <Image source={require("./assets/img2.png")} resizemode="contain"
              style={{width: 80, height: 80, borderRadius: 40}}
@@ -55,7 +60,7 @@ export default function App() {
             </ScrollView>
             <NavBar />
       </SafeAreaView>
-    
+    </NativeBaseProvider>  
   );
 }
 
@@ -67,7 +72,7 @@ const NavBar = () => {
             <Image source={require('./assets/empty-wallet-time.png')} style={{width: 22, height: 22}}  />
             <View style={{ width: 99, height: 48, borderRadius: 12, backgroundColor: 'rgba(246, 79, 0, 0.1)', padding: 8, flexDirection: 'row', alignItems: 'center'}}>
               <Image source={require('./assets/profile.png')} style={{ width: 22, height: 22}}  />
-              <Text style={[{ marginLeft: 8}]}>Profile</Text>
+              <Text style={[styles.regtextNonito,{ marginLeft: 8}]}>Profile</Text>
             </View>
       </View>
   )
@@ -118,5 +123,13 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 20,
     color: ' #B2B3B3'
+  },
+  regtextNonito: {
+    fontFamily: 'Nonito',
+    fontStyle: 'normal',
+    fontWeight: '700',
+    fontSize: 14,
+    lineHeight: 19, 
+    color: '#F64F00'
   }
 });
