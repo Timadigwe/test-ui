@@ -1,0 +1,30 @@
+{
+  "cli": {
+    "version": ">= 2.1.0"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "testuiApp": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    
+    "testuiApp2": {
+      "android": {
+        "gradleCommand": ":app:assembleRelease"
+      }
+    },
+    "testuiApp3": {
+      "developmentClient": true
+    },
+    "production": {}
+  },
+  "submit": {
+    "production": {}
+  }
+}
